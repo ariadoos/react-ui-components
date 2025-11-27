@@ -1,6 +1,7 @@
 {
   "name": "starter",
-  "private": true,
+  "private": false,
+  "homepage": "https://ariadoos.github.io/react-ui-components/",
   "version": "0.0.0",
   "type": "module",
   "scripts": {
