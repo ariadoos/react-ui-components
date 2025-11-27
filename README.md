@@ -1,18 +1,28 @@
-# React components
+# React UI components
+
+## Installation
+
+```
+npm run ci
+```
+
+## Local environment
+
+```
+  npm run dev
+```
 
 ## Button
 
-~This was the button component design challenge from the GreatFrontEnd.
+This was the button component design challenge from the GreatFrontEnd.
 
 Implementation Details
 
 1. Tech stack
-
-
-    - React
-    - Typescript
-    - Tailwind CSS v4
-    - Class variant authority (CVA)
+   - React
+   - Typescript
+   - Tailwind CSS v4
+   - Class variant authority (CVA)
 
 2. Button Variants
    - Style variants - 6 options (Primary, Secondary, Tertiary, Link (Color), Link (Gray), Destructive)
