@@ -1,0 +1,152 @@
+@import 'tailwindcss';
+
+/* -----------------------------------------------------------------------
+  LAYER 1: SEMANTIC MAPPING (The Logic)
+  -----------------------------------------------------------------------
+  Here we define standard CSS variables.
+  By scoping them to :root and .dark, the browser handles the switching logic
+  for us.
+*/
+@layer base {
+  :root {
+    /* --- BACKGROUNDS --- */
+    /* Surface 0: The main canvas */
+    --bg-primary: var(--color-white);
+    --bg-primary-hover: var(--color-neutral-50);
+    --bg-primary-inverted: var(--color-neutral-950);
+
+    /* Surface 1: Cards, Sidebars */
+    --bg-secondary: var(--color-gray-100);
+    --bg-secondary-hover: var(--color-gray-200);
+
+    /* Surface 2: Modals, Inputs */
+    --bg-tertiary: var(--color-white);
+
+    /* Functional Backgrounds */
+    --bg-disabled: var(--color-neutral-100);
+    --bg-disabled-emphasize: var(--color-neutral-200);
+
+    /* Brand Backgrounds */
+    --bg-brand-primary: var(--color-indigo-700);
+    --bg-brand-primary-emphasize: var(--color-indigo-800);
+    --bg-brand-subtle: var(--color-indigo-50);
+
+    /* Feedback Backgrounds */
+    --bg-error: var(--color-red-600);
+    --bg-error-emphasize: var(--color-red-700);
+    --bg-error-subtle: var(--color-red-50);
+    --bg-success-subtle: var(--color-green-50);
+    --bg-neutral-subtle: var(--color-gray-50);
+    --bg-warning-subtle: var(--color-amber-50);
+
+    /* --- TEXT --- */
+    --text-primary: var(--color-neutral-900);
+    --text-primary-hover: var(--color-neutral-950);
+    --text-primary-invert: var(--color-white);
+
+    --text-secondary: var(--color-neutral-600);
+    --text-tertiary: var(--color-neutral-500);
+
+    --text-brand: var(--color-indigo-700);
+    --text-disabled: var(--color-neutral-400);
+
+    --text-error: var(--color-red-600);
+    --text-error-emphasize: var(--color-red-800);
+    --text-success: var(--color-green-700);
+    --text-warning: var(--color-amber-700);
+  }
+
+  /* DARK MODE OVERRIDES
+     We only override what needs to change.
+  */
+  .dark {
+    /* --- BACKGROUNDS (Dark) --- */
+    --bg-primary: var(--color-neutral-950); /* Main background becomes dark */
+    --bg-primary-hover: var(--color-neutral-900);
+    --bg-primary-inverted: var(--color-white);
+
+    --bg-secondary: var(--color-neutral-900);
+    --bg-secondary-hover: var(--color-neutral-800);
+
+    --bg-tertiary: var(--color-neutral-800);
+
+    --bg-disabled: var(--color-neutral-800);
+    --bg-disabled-emphasize: var(--color-neutral-700);
+
+    /* Brand: Usually slightly lighter in dark mode for visibility */
+    --bg-brand-primary: var(--color-indigo-500);
+    --bg-brand-primary-emphasize: var(--color-indigo-400);
+    --bg-brand-subtle: rgb(67 56 202 / 0.2); /* Indigo 700 with opacity */
+
+    /* Feedback backgrounds */
+    --bg-error: var(--color-red-600);
+    --bg-error-emphasize: var(--color-red-500);
+    --bg-error-subtle: rgb(127 29 29 / 0.2); /* Red 900 opacity */
+    --bg-success-subtle: rgb(20 83 45 / 0.2); /* Green 900 opacity */
+    --bg-neutral-subtle: var(--color-neutral-900);
+    --bg-warning-subtle: rgb(120 53 15 / 0.2); /* Amber 900 opacity */
+
+    /* --- TEXT (Dark) --- */
+    --text-primary: var(--color-neutral-50);
+    --text-primary-hover: var(--color-white);
+    --text-primary-invert: var(--color-neutral-900);
+
+    --text-secondary: var(--color-neutral-400);
+    --text-tertiary: var(--color-neutral-500);
+
+    --text-brand: var(--color-indigo-400); /* Lighter for contrast */
+    --text-disabled: var(--color-neutral-600);
+
+    --text-error: var(--color-red-400);
+    --text-error-emphasize: var(--color-red-300);
+    --text-success: var(--color-green-400);
+    --text-warning: var(--color-amber-400);
+  }
+}
+
+/* -----------------------------------------------------------------------
+  LAYER 2: TAILWIND CONFIGURATION (The API)
+  -----------------------------------------------------------------------
+  Here we map the Tailwind utility names to the CSS variables defined above.
+  We prefix variables with --color- to tell Tailwind these are color utilities.
+*/
+@theme {
+  /* Backgrounds */
+  --color-background-primary: var(--bg-primary);
+  --color-background-primary-hover: var(--bg-primary-hover);
+  --color-background-primary-inverted: var(--bg-primary-inverted);
+
+  --color-background-secondary: var(--bg-secondary);
+  --color-background-secondary-hover: var(--bg-secondary-hover);
+
+  --color-background-tertiary: var(--bg-tertiary);
+  --color-background-disabled: var(--bg-disabled);
+  --color-background-disabled-emphasize: var(--bg-disabled-emphasize);
+
+  --color-background-brand-primary: var(--bg-brand-primary);
+  --color-background-brand-primary-emphasize: var(--bg-brand-primary-emphasize);
+
+  --color-background-error: var(--bg-error);
+  --color-background-error-emphasize: var(--bg-error-emphasize);
+
+  --color-background-error-subtle: var(--bg-error-subtle);
+  --color-background-success-subtle: var(--bg-success-subtle);
+  --color-background-brand-subtle: var(--bg-brand-subtle);
+  --color-background-neutral-subtle: var(--bg-neutral-subtle);
+  --color-background-warning-subtle: var(--bg-warning-subtle);
+
+  /* Text */
+  --color-text-primary: var(--text-primary);
+  --color-text-primary-hover: var(--text-primary-hover);
+  --color-text-primary-invert: var(--text-primary-invert);
+
+  --color-text-secondary: var(--text-secondary);
+  --color-text-tertiary: var(--text-tertiary);
+  --color-text-brand: var(--text-brand);
+  --color-text-disabled: var(--text-disabled);
+
+  --color-text-error: var(--text-error);
+  --color-text-error-emphasize: var(--text-error-emphasize);
+  --color-text-success: var(--text-success);
+  --color-text-warning: var(--text-warning);
+}
