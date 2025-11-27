@@ -1,73 +1,34 @@
-# React + TypeScript + Vite
+# React components
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Button
 
-Currently, two official plugins are available:
+    This was the button component design challenge from the GreatFrontend.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+    Implementation Details
 
-## React Compiler
+    1. Tech stack
+      - React
+      - Typescript
+      - Tailwind CSS v4
+      - Class variant authority (CVA)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+    2. Button Variants
 
-## Expanding the ESLint configuration
+        - Style variants - 6 options (Primary, Secondary, Tertiary, Link (Color), Link (Gray), Destructive)
+        - Sizing - 4 options (md, lg, xl, 2xl)
+        - Icon and interaction support
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+    3. Design approaches
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+        - Used semantic color system using Tailwind color palette.
+        - Made component with Single Responsibility Principle.
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+    4. Learning outcomes
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+        - CVA made the handling of different variants for a button component easier.
+        - I wasn’t sure whether to place the Icon component inside the Button component or keep it separate. I eventually chose to keep the Icon outside. Both options have pros and cons, but I prefer keeping the Button component simple and letting the parent component decide how to display the icon.
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+    5. Future improvements
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+      - Group the tailwind classes for easier readability / reusability .
+      - Migrate this component to storybook.
