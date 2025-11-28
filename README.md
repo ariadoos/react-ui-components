@@ -1,5 +1,11 @@
 # React UI components
 
+This repository contains the react components made from scratch, which are the part of the GreatFrontEnd challenges.
+
+Pages folder contains the different component variants, while components include the each component which was develop from the scratch.
+
+Future plan is to migrate all of these component to storybook.
+
 ## Installation
 
 ```
@@ -12,9 +18,31 @@ npm run ci
   npm run dev
 ```
 
+# Badge
+
+Route '/badges'
+
+1. Tech stack
+   - React
+   - Typescript
+   - Tailwind CSS v4
+   - Class variant authority (CVA)
+
+2. Button Variants
+   - Style variants - 5 options (neutral, error, warning, success, brand)
+   - Sizing - 3 options (sm, md, lg)
+
+3. Design approaches and resources
+   - Used semantic color system using Tailwind color palette.
+
+4. Learning outcomes
+
+- Realized that I missed the custom classname feature, so added classname props to add / override the component classes if necessary.
+- Designing this component was pretty straightforward after doing the button component.
+
 ## Button
 
-This was the button component design challenge from the GreatFrontEnd.
+Route '/buttons'
 
 Implementation Details
 
@@ -42,4 +70,4 @@ Implementation Details
 
 5. Future improvements
    - Group the tailwind classes for easier readability / reusability .
-   - Migrate this component to storybook.~
+   - Migrate this component to storybook.

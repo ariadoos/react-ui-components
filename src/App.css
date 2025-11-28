@@ -54,14 +54,29 @@
     --text-error-emphasize: var(--color-red-800);
     --text-success: var(--color-green-700);
     --text-warning: var(--color-amber-700);
+
+    /* --- BORDERS --- */
+    /* Neutral/Primary Border */
+    --border-primary: var(--color-neutral-200);
+    /* Secondary/Default Border */
+    --border-secondary: var(--color-gray-400);
+    /* Functional Borders */
+    --border-success: var(--color-green-200);
+    --border-brand-solid: var(--color-indigo-600);
+    --border-brand-subtle: var(--color-indigo-200);
+    --border-error: var(--color-red-200);
+    --border-warning: var(--color-amber-200);
   }
 
-  /* DARK MODE OVERRIDES
+  /*
+     PLACEHOLDER FOR
+     DARK MODE OVERRIDES
      We only override what needs to change.
   */
   .dark {
     /* --- BACKGROUNDS (Dark) --- */
-    --bg-primary: var(--color-neutral-950); /* Main background becomes dark */
+    --bg-primary: var(--color-neutral-950);
+    /* Main background becomes dark */
     --bg-primary-hover: var(--color-neutral-900);
     --bg-primary-inverted: var(--color-white);
 
@@ -76,15 +91,19 @@
     /* Brand: Usually slightly lighter in dark mode for visibility */
     --bg-brand-primary: var(--color-indigo-500);
     --bg-brand-primary-emphasize: var(--color-indigo-400);
-    --bg-brand-subtle: rgb(67 56 202 / 0.2); /* Indigo 700 with opacity */
+    --bg-brand-subtle: rgb(67 56 202 / 0.2);
+    /* Indigo 700 with opacity */
 
     /* Feedback backgrounds */
     --bg-error: var(--color-red-600);
     --bg-error-emphasize: var(--color-red-500);
-    --bg-error-subtle: rgb(127 29 29 / 0.2); /* Red 900 opacity */
-    --bg-success-subtle: rgb(20 83 45 / 0.2); /* Green 900 opacity */
+    --bg-error-subtle: rgb(127 29 29 / 0.2);
+    /* Red 900 opacity */
+    --bg-success-subtle: rgb(20 83 45 / 0.2);
+    /* Green 900 opacity */
     --bg-neutral-subtle: var(--color-neutral-900);
-    --bg-warning-subtle: rgb(120 53 15 / 0.2); /* Amber 900 opacity */
+    --bg-warning-subtle: rgb(120 53 15 / 0.2);
+    /* Amber 900 opacity */
 
     /* --- TEXT (Dark) --- */
     --text-primary: var(--color-neutral-50);
@@ -94,13 +113,24 @@
     --text-secondary: var(--color-neutral-400);
     --text-tertiary: var(--color-neutral-500);
 
-    --text-brand: var(--color-indigo-400); /* Lighter for contrast */
+    --text-brand: var(--color-indigo-400);
+    /* Lighter for contrast */
     --text-disabled: var(--color-neutral-600);
 
     --text-error: var(--color-red-400);
     --text-error-emphasize: var(--color-red-300);
     --text-success: var(--color-green-400);
     --text-warning: var(--color-amber-400);
+
+    /* --- BORDERS (Dark) --- */
+    /* Adjust lighter borders for better visibility in dark mode */
+    --border-primary: var(--color-neutral-700);
+    --border-secondary: var(--color-neutral-600);
+    --border-success: var(--color-green-700);
+    --border-brand-solid: var(--color-indigo-400);
+    --border-brand-subtle: var(--color-indigo-700);
+    --border-error: var(--color-red-700);
+    --border-warning: var(--color-amber-700);
   }
 }
 
@@ -149,4 +179,13 @@
   --color-text-error-emphasize: var(--text-error-emphasize);
   --color-text-success: var(--text-success);
   --color-text-warning: var(--text-warning);
+
+  /* --- BORDERS --- */
+  --color-border-primary: var(--border-primary);
+  --color-border-secondary: var(--border-secondary);
+  --color-border-success: var(--border-success);
+  --color-border-brand-solid: var(--border-brand-solid);
+  --color-border-brand-subtle: var(--border-brand-subtle);
+  --color-border-error: var(--border-error);
+  --color-border-warning: var(--border-warning);
 }
