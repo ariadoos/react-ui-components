@@ -11,15 +11,13 @@ const NotFound: React.FC = () => (
 
 function App() {
   return (
-    <main className="w-full">
-      <Routes>
-        {ROUTE_CONFIG.map((route) => (
-          <Route key={route.path} path={route.path} element={route.element} />
-        ))}
+    <Routes>
+      {ROUTE_CONFIG.map((route) => (
+        <Route key={route.path} path={route.path} element={route.element} />
+      ))}
 
-        <Route path="*" element={<NotFound />} />
-      </Routes>
-    </main>
+      <Route path="*" element={<NotFound />} />
+    </Routes>
   );
 }
 

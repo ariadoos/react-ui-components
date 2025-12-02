@@ -1,6 +1,7 @@
 import Badges from '@src/pages/Badges';
 import Buttons from '@src/pages/Buttons';
-import { Navigate } from 'react-router';
+import Home from '@src/pages/Home';
+import Navbar from '@src/pages/Navbar';
 
 interface RouteConfig {
   readonly path: string;
@@ -11,18 +12,23 @@ interface RouteConfig {
 const ROUTE_CONFIG: readonly RouteConfig[] = [
   {
     path: '/',
-    element: <Navigate to="/badges" replace />,
+    element: <Home />,
     name: 'Home',
   },
   {
     path: '/buttons',
     element: <Buttons />,
-    name: 'Buttons',
+    name: 'Design System - Buttons',
   },
   {
     path: '/badges',
     element: <Badges />,
-    name: 'Buttons',
+    name: 'Design System - Badges',
+  },
+  {
+    path: '/navbar',
+    element: <Navbar />,
+    name: 'Design System - Navbar',
   },
 ];
 

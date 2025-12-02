@@ -9,6 +9,18 @@
 */
 @layer base {
   :root {
+    /* --- Z-INDEX SCALE --- */
+    --z-dropdown: 1000;
+    --z-sticky: 1020;
+    --z-fixed: 1030;
+    --z-offcanvas-backdrop: 1040;
+    --z-offcanvas: 1045;
+    --z-modal-backdrop: 1050;
+    --z-modal: 1055;
+    --z-popover: 1070;
+    --z-tooltip: 1080;
+    --z-toast: 1090;
+
     /* --- BACKGROUNDS --- */
     /* Surface 0: The main canvas */
     --bg-primary: var(--color-white);
