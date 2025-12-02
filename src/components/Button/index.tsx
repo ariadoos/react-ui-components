@@ -86,23 +86,33 @@ const buttonVariants = cva(
 type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> &
   VariantProps<typeof buttonVariants>;
 
-const Button = ({
-  variant,
-  size,
-  disabled = false,
-  iconOnly = false,
-  children,
-  ...props
-}: ButtonProps) => {
-  return (
-    <button
-      disabled={disabled}
-      className={cn(buttonVariants({ variant, size, disabled, iconOnly }))}
-      {...props}
-    >
-      {children}
-    </button>
-  );
-};
+const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
+  (
+    {
+      variant,
+      size,
+      disabled = false,
+      iconOnly = false,
+      className,
+      children,
+      ...props
+    },
+    ref
+  ) => {
+    return (
+      <button
+        ref={ref}
+        disabled={disabled}
+        className={cn(
+          buttonVariants({ variant, size, disabled, iconOnly }),
+          className
+        )}
+        {...props}
+      >
+        {children}
+      </button>
+    );
+  }
+);
 
 export { Button, type ButtonProps };
