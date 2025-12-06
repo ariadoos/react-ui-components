@@ -1,0 +1,7 @@
+@import 'tailwindcss';
+
+@layer utilities {
+    .gradient-bg-color {
+        @apply min-w-screen min-h-screen flex flex-col bg-gradient-to-b from-gray-50 to-[#d2d6db];
+    }
+}

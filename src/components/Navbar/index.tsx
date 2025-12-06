@@ -6,6 +6,9 @@ import { RiMenuFill } from 'react-icons/ri';
 import { RiCloseFill } from 'react-icons/ri';
 import { Icon } from '../Icon';
 
+// Article reference for slide out navigation focus management and accessibility
+// https://knowbility.org/blog/2020/accessible-slide-menus
+
 type NavLinksProps = {
   menuRef?: React.Ref<HTMLUListElement | null>; // Correct type
 };
@@ -78,8 +81,36 @@ const NavButtons = () => {
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
-  const mobileMenuButtonRef = useRef<HTMLButtonElement | null>(null);
-  const mobileMenuRef = useRef<HTMLUListElement | null>(null);
+  const hamburgerMenuBtnRef = useRef<HTMLButtonElement | null>(null);
+  const mobileNavigationMenusRef = useRef<HTMLUListElement | null>(null);
+  const slideOutContainerRef = useRef<HTMLElement | null>(null);
+
+  const menuTransitionClass = isMenuOpen
+    ? 'visible translate-x-0'
+    : 'invisible -translate-x-full';
+
+  const toggleMenu = () => {
+    if (!isMenuOpen) {
+      // Move focus to first link in mobile menu when opened
+      setTimeout(() => {
+        const el = mobileNavigationMenusRef.current?.querySelector(
+          'li:first-child a'
+        ) as HTMLAnchorElement | null | undefined;
+        el?.focus();
+      }, 100);
+    }
+
+    setIsMenuOpen(!isMenuOpen);
+  };
+
+  const closeMenu = () => {
+    setIsMenuOpen(false);
+
+    // Return focus to mobile menu button when closed
+    setTimeout(() => {
+      hamburgerMenuBtnRef.current?.focus();
+    }, 100);
+  };
 
   // Handle ESC key to close mobile menu
   useEffect(() => {
@@ -88,7 +119,6 @@ const Navbar = () => {
     const handleEsc = (event: KeyboardEvent) => {
       if (event.key === 'Escape' && isMenuOpen) {
         closeMenu();
-        mobileMenuButtonRef.current?.focus();
       }
     };
     document.addEventListener('keydown', handleEsc);
@@ -96,26 +126,59 @@ const Navbar = () => {
     return () => document.removeEventListener('keydown', handleEsc);
   }, [isMenuOpen]);
 
-  const toggleMenu = () => {
-    if (!isMenuOpen) {
-      // Move focus to first link in mobile menu when opened
-      setTimeout(() => {
-        const el = mobileMenuRef.current?.querySelector('li:first-child a') as
-          | HTMLAnchorElement
-          | null
-          | undefined;
-        el?.focus();
-      }, 100);
-    }
+  // Handle click outside to close mobile menu
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        isMenuOpen &&
+        slideOutContainerRef.current &&
+        !slideOutContainerRef.current.contains(event.target as Node)
+      ) {
+        closeMenu();
+      }
+    };
 
-    setIsMenuOpen(!isMenuOpen);
-  };
+    document.addEventListener('mousedown', handleClickOutside);
 
-  const closeMenu = () => setIsMenuOpen(false);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [isMenuOpen]);
 
-  const menuTransitionClass = isMenuOpen
-    ? 'translate-x-0'
-    : '-translate-x-full';
+  // Manage focus trap within mobile menu when open
+  useEffect(() => {
+    if (!isMenuOpen) return;
+
+    const handleTabKey = (e: KeyboardEvent) => {
+      if (e.key !== 'Tab') return;
+
+      const focusableElements =
+        slideOutContainerRef.current?.querySelectorAll<HTMLElement>(
+          'a, button, input, textarea, select, [tabindex]:not([tabindex="-1"])'
+        );
+      if (!focusableElements || focusableElements.length === 0) return;
+
+      const firstElement = focusableElements[0];
+      const lastElement = focusableElements[focusableElements.length - 1];
+
+      if (e.shiftKey) {
+        // Shift + Tab
+        if (document.activeElement === firstElement) {
+          e.preventDefault();
+          lastElement.focus();
+        }
+      } else {
+        // Tab
+        if (document.activeElement === lastElement) {
+          e.preventDefault();
+          firstElement.focus();
+        }
+      }
+    };
+
+    document.addEventListener('keydown', handleTabKey);
+    return () => document.removeEventListener('keydown', handleTabKey);
+  }, [isMenuOpen]);
 
   return (
     <>
@@ -136,13 +199,13 @@ const Navbar = () => {
 
           {/* Mobile menu */}
           <Button
-            ref={mobileMenuButtonRef}
+            ref={hamburgerMenuBtnRef}
             variant="linkGray"
             size="md"
             className="lg:hidden"
             aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
             aria-expanded={isMenuOpen}
-            aria-controls={'mobile-menu'}
+            aria-controls={'slide-out-menu'}
             onClick={() => toggleMenu()}
             iconOnly={true}
           >
@@ -152,9 +215,9 @@ const Navbar = () => {
 
         {/* Mobile sidebar nav items */}
         <nav
-          id="mobile-menu"
-          aria-hidden={!isMenuOpen}
-          className={`lg:hidden fixed h-full w-full top-0 bottom-0
+          ref={slideOutContainerRef}
+          id="slide-out-menu"
+          className={`lg:hidden fixed h-full w-[359px] lg:w-full top-0 bottom-0
                       z-(--z-fixed) bg-background-primary overflow-x-hidden
                       flex flex-col px-4 pt-8 pb-4 gap-6
                       -translate-x-full transition delay-300 ease-in-out ${menuTransitionClass} `}
@@ -177,7 +240,7 @@ const Navbar = () => {
             </Button>
           </div>
 
-          <NavLinks menuRef={mobileMenuRef} />
+          <NavLinks menuRef={mobileNavigationMenusRef} />
 
           <div className="flex flex-col gap-4 self-stretch">
             <NavButtons />
