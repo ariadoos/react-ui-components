@@ -18,7 +18,9 @@ npm run ci
   npm run dev
 ```
 
-# Badge
+# Design Component
+
+## Badge
 
 Route '/badges'
 
@@ -36,9 +38,8 @@ Route '/badges'
    - Used semantic color system using Tailwind color palette.
 
 4. Learning outcomes
-
-- Realized that I missed the custom classname feature, so added classname props to add / override the component classes if necessary.
-- Designing this component was pretty straightforward after doing the button component.
+   - Realized that I missed the custom classname feature, so added classname props to add / override the component classes if necessary.
+   - Designing this component was pretty straightforward after doing the button component.
 
 ## Button
 
@@ -71,3 +72,46 @@ Implementation Details
 5. Future improvements
    - Group the tailwind classes for easier readability / reusability .
    - Migrate this component to storybook.
+
+## Navbar
+
+Implementation Details
+
+1. Tech stack and approach
+   - React, Typescript, Tailwind CSSv4
+   - Follow the mobile-first approach towards designing navbar.
+
+2. Useful resources and lessons learnt
+
+   I took the challenge to make the slide out menu accessible with the desire focus management. It was new thing to me, but this article https://knowbility.org/blog/2020/accessible-slide-menus provide me the required knowledge that needs to be included.
+
+   ### Accessibility & Focus Management Summary
+
+   ### 1. ARIA Attributes for Hamburger Menu Button
+   - **`aria-label`** communicates whether the user is opening or closing the menu.
+   - **`aria-expanded`** indicates the current state of the mobile menu.
+   - **`aria-controls="slide-out-menu"`** links the button to the navigation drawer it toggles.
+
+   ### 2. Slide out visibility
+   - Visibility was set to hidden when the slide-out menu is closed and visible while the menu is opened as the `display:none` was not working while opening slide-out menu.
+
+   ### 3. Focus Handling While Opening and Closing the Menu
+   - On open, focus automatically moves to the **first link** inside the mobile navigation.
+   - After closing, focus returns to the **hamburger menu button**.
+
+   ### 4. Escape Key Support
+   - Pressing **Escape** triggers menu closure.
+   - Follows accessibility patterns used in modals, drawers, and overlays.
+
+   ### 5. Click-Outside Detection
+   - Clicking anywhere outside the menu container closes the menu.
+
+   ### 6. Focus Trap Inside the Mobile Menu
+   - `Tab` and `Shift+Tab` are intercepted while the menu is open:
+   - Prevents focus from leaving the menu.
+   - Loops focus between the first and last interactive elements.
+   - Ensures that keyboard users remain within the open menu until it is closed.
+
+3. Notes/questions for community
+
+   Feel free to provide any feedback that could help me improve this component’s accessibility and focus management.
