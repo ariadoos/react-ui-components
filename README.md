@@ -18,7 +18,7 @@ npm run ci
   npm run dev
 ```
 
-# Design Component
+## Design Component
 
 ## Badge
 
