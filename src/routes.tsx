@@ -3,6 +3,7 @@ import Buttons from '@src/pages/Buttons';
 // import Home from '@src/pages/Home';
 import Navbar from '@src/pages/Navbar';
 import { Navigate } from 'react-router';
+import TxtInput from './pages/TextInput';
 
 interface RouteConfig {
   readonly path: string;
@@ -30,6 +31,11 @@ const ROUTE_CONFIG: readonly RouteConfig[] = [
   {
     path: '/navbar',
     element: <Navbar />,
+    name: 'Design System - Navbar',
+  },
+  {
+    path: '/text-input',
+    element: <TxtInput />,
     name: 'Design System - Navbar',
   },
 ];
