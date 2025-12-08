@@ -45,7 +45,7 @@ const TEXT_INPUT_CONFIG = [
 const TxtInput = () => {
   return (
     <div className="min-w-screen min-h-screen flex justify-center items-center">
-      <div className="flex flex-col w-[340px] justify-center gap-6">
+      <div className="flex flex-col w-[340px] justify-center gap-12">
         {TEXT_INPUT_CONFIG.map((config, index) => (
           <TextInput key={index} {...config}></TextInput>
         ))}
