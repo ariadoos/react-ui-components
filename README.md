@@ -115,3 +115,25 @@ Implementation Details
 3. Notes/questions for community
 
    Feel free to provide any feedback that could help me improve this component’s accessibility and focus management.
+
+## Text Input
+
+Implementation Details
+
+1. Tech stack and approach
+   - React, Typescript, Tailwind CSSv4, CVA (Class Variant Authority)
+   - Follow the mobile-first approach towards designing navbar.
+
+2. Useful resources and lessons learnt
+
+   Accessibility used are as follows.
+
+   `aria-invalid` – Marks the input as invalid when there’s an error. Screen readers will announce it as invalid.
+
+   `aria-describedby` – Links the input to a hint or error message using the paragraph’s id. Screen readers read this text when the input is focused.
+
+   `htmlFor on <label>` – Connects the label to the input. Clicking the label focuses the input, and screen readers announce the label.
+
+3. Notes/questions for community
+
+   Feel free to provide any feedback that could help me improve this component.
