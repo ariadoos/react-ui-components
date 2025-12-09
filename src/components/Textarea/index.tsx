@@ -114,7 +114,7 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
                 maxLengthError ? 'text-text-error' : 'text-text-placeholder',
               ])}
             >
-              {textareaValue.length} / {maxLength}
+              {textareaValue.length}/{maxLength}
             </p>
           )}
           {hasError && (
