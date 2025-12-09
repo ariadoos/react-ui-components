@@ -1,9 +1,9 @@
 import Badges from '@src/pages/Badges';
 import Buttons from '@src/pages/Buttons';
-// import Home from '@src/pages/Home';
 import Navbar from '@src/pages/Navbar';
+import TxtInput from '@src/pages/TextInput';
+import TextArea from '@src/pages/Textarea';
 import { Navigate } from 'react-router';
-import TxtInput from './pages/TextInput';
 
 interface RouteConfig {
   readonly path: string;
@@ -36,6 +36,11 @@ const ROUTE_CONFIG: readonly RouteConfig[] = [
   {
     path: '/text-input',
     element: <TxtInput />,
+    name: 'Design System - Navbar',
+  },
+  {
+    path: '/textarea',
+    element: <TextArea />,
     name: 'Design System - Navbar',
   },
 ];
