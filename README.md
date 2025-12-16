@@ -160,3 +160,17 @@ Implementation Details
 3. Notes/questions for community
 
    Feel free to provide any feedback that could help me improve this component.
+
+## Radio Card
+
+Implementation Details
+
+1. Tech stack and approach
+   - React, Typescript, Tailwind CSSv4, CVA (Class Variant Authority)
+   - Follow the mobile-first approach towards designing navbar.
+
+2. Useful resources and lessons learnt
+
+3. Notes/questions for community
+
+   Feel free to provide any feedback that could help me improve this component.
