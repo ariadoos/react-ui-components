@@ -232,6 +232,6 @@
   --color-text-filled: var(--text-filled);
 
   /** ICONS */
-  --color-icon-primary: var(--icon-primary);
+  --color- -primary: var(--icon-primary);
   --color-icon-error: var(--icon-error);
 }
